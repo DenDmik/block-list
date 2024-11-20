@@ -4,11 +4,12 @@ import {IsEmail, IsNotEmpty} from 'class-validator'
 
 export class SignUpDto{
     //  @ApiProperty используется для связки со swagger
-    @ApiProperty({
-        example:'test@gmail.com'
-    })
-    @IsEmail()
-    email:string
+    // получим email из токена
+    // @ApiProperty({
+    //     example:'test@gmail.com'
+    // })
+    // @IsEmail()
+    // email:string
 
     @ApiProperty({
         example:'1234'
@@ -24,11 +25,12 @@ export class SignUpDto{
 }
 
 export class SignInDto{
-    @ApiProperty({
-        example:'dmikdenis@gmail.com'
-    })
-    @IsEmail()
-    email:string
+    // получим email из токена
+    // @ApiProperty({
+    //     example:'dmikdenis@gmail.com'
+    // })
+    // @IsEmail()
+    // email:string
 
     @ApiProperty({
         example:'1234'

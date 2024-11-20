@@ -19,17 +19,21 @@ export class AuthService {
          
       
         ) {}
- //////////////////////////Sign Up       
+ //////////////////////////Sign Up !!! ЭТО БУДЕТ OTP VEREFICATION  (регистрация)  
 // у нас есть SignUpDto, почему автор пишет 
 // singUp(email:string, password:string)
-   async signUp(email:string,password:string,codeOtp:string,tokenOtp:string){
-       const user = await this.userService.findByEmail(email)
+   async signUp(password:string,codeOtp:string,tokenOtp:string){
+       
 //////////////////////////////////
 const sessionInfo=  await this.jwtService.verifyAsync(tokenOtp,{secret:process.env.JWT_SECRET})
 console.log(sessionInfo.code)
 const code = sessionInfo.code
-    ///////////////// проверка кода otp
-    if(code !== codeOtp){throw new BadRequestException('неверный код Otp')}
+const email = sessionInfo.email
+///////////////// проверка кода otp
+if(code !== codeOtp){throw new BadRequestException('неверный код Otp')}
+//////////////
+const user = await this.userService.findByEmail(email)
+    
 //////////////////////////////
 
     //    проверка на существование user в БД
@@ -50,25 +54,20 @@ const code = sessionInfo.code
         id:newUser.id})
         return {accessToken}
        }
-       //////////////////////////////SIGN IN
-    async signIn(email:string,password:string,codeOtp:string ,tokenOtp:string){
-        const user = await this.userService.findByEmail(email)
-        
-        if(!user){throw  new UnauthorizedException()}
+       /////////////////////// SIGN IN !!! ЭТО БУДЕТ OTP VEREFICATION  (вход) 
+    async signIn(password:string,codeOtp:string ,tokenOtp:string){ 
         ///////////////////////////////////////////////////
         
      const sessionInfo=  await this.jwtService.verifyAsync(tokenOtp,{secret:process.env.JWT_SECRET})
            
     console.log(sessionInfo.code)
     const code = sessionInfo.code
+    const email = sessionInfo.email
         ///////////////// проверка кода otp
         if(code !== codeOtp){throw new BadRequestException('неверный код Otp')}
-       
-        ///////////////////////////////////////
-        ///проверка пароля true or false
-        // const passwordIsMatch=(user)?await argon2.verify(tokenOtp,codeOtp):false
-        ////////////////////////////////////////// 
-        // if(!passwordIsMatch){throw new BadRequestException('неверный код Otp')}
+        ///////
+       const user = await this.userService.findByEmail(email)
+       if(!user){throw  new UnauthorizedException()}
         //////////////////////////////////////////////////
         const hash= this.passWordService.getHash(password,user.salt)
         if(hash !==user.hash){throw new UnauthorizedException() }
@@ -78,18 +77,17 @@ const code = sessionInfo.code
         })
         return {accessToken}
     }
+    // ЭТО БУДЕТ В SIGN UP и SIGN IN
     // функция отправки Otp на почту пользователя и создание токена
     async signOtp(email:string){
-              //  функция генерации кода не работает
-      // const otp = this.userService.otpGenetator();
-      //    console.log(otp)
       // еще генерпция кода , работает , 6 цифр.//////////////
       const code = Math.floor(100000+ Math.random()*900000).toString()
       console.log(code)
       // /////////////////////////////////////////////////////
-          //  функция сенд емайл
-
-     this.mailerService.sendMail({
+          //  функция сенд емайл 
+        //   проверь на правильность код
+try{
+    this.mailerService.sendMail({
         to:`${email}`,
         from:'dmytriievdenistest@gmail.com',
         subject:'Testing email',
@@ -100,10 +98,8 @@ const code = sessionInfo.code
             email:email,
             code:code
         })
-        //////////////////////////////
-        // const accessCode = await argon2.hash(code)
         return{accessCode}
-        
+    } catch{ throw new BadRequestException('не отправилась почта')}                
    }
 }
 

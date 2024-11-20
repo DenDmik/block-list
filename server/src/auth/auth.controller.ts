@@ -18,9 +18,14 @@ export class AuthController {
                 private cookieOtpServ: CookieOtpServ,
     ) {}
 
-// запрос выполняется на странице проверки сущесвования почты
+// запрос выполняется на странице проверки сущесвования почты 
 // там отправляется codeOtp на почту пользователя и одновременно
 // устанавливается его хеш в куки ответа
+
+// на фронте страница называется SIGN UP или на стр SIGN IN
+//разичается дальнейшим переходом или на OTP VEREFICATION (SING UP регистрация)
+// или на OTP VEREFICATION (SING UP вход)
+
 @Post('sing-up-otp')
 @ApiCreatedResponse()
 async signOtp(
@@ -38,7 +43,7 @@ async signOtp(
 
 
 
-
+// это страница OTP VEREFICATION (SING UP регистрация)
 @Post('sign-up')
 @ApiCreatedResponse()
 // внимательно с Response , он может вставиться из др библиотеки , а надо из express
@@ -58,10 +63,10 @@ async signUp(
 //     // в authService метод singUp регистрирует нового пользователя и
 //     // создает accessToken с помощью jwtServise.signAsync и возвращает его,
 //     // здесь accessToken присваевается переменной accessToken
-//     // body.email ,body.password,body.codeotp(код полученный из почты)
+//     //  ,body.password,body.codeotp(код полученный из почты)
 //     //  данне из формы регистрации
          const{accessToken} = await this.authService.signUp(
-           body.email,
+           
            body.password,
            body.codeOtp,
            tokenOtp)
@@ -70,7 +75,7 @@ async signUp(
 //     // в HTTP ответе res
     this.cookieService.setToken(res,accessToken)
 }
-
+//////////////  это страница OTP VEREFICATION (SING UP вход)
 @Post('sign-in')
 @ApiOkResponse()
 @HttpCode(HttpStatus.OK)
@@ -82,7 +87,7 @@ async signIn(
         console.log(tokenOtp)
 
     const{accessToken} = await this.authService.signIn(
-        body.email,
+        
         body.password,
         body.codeOtp,
     tokenOtp)

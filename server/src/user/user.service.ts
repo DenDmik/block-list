@@ -22,17 +22,5 @@ export class UserService {
         await this.accountService.create(user.id)
         return user
     }
-    //  здесь надо добавить update
-    //  async updateOtp(email:string,codeOtp:number){
-    //     const user = await this.db.user.update({
-    //         where:{email:email},
-    //     data:{codeOtp}})
-    //  }
-    // не работает
-    // otpGenetator(){
-    //     const otp = otpGenerator.generate ( 6 ,  { upperCaseAlphabets : false , specialChars : false } ) ;
-    //     console.log(otp)
-
-    // }
       }
 
