@@ -1,32 +1,25 @@
 import { UiButton } from "@/shared/ui/ui-button"
 import { UiTextField } from "@/shared/ui/ui-text-field"
 import { ROUTES } from "@/shared/constants/routes";
-import { useSignUpForm } from "../model/use-sign-up-form";
+import { useSignUpFormOtp } from "../model/use-otp";
 import { UiLink } from "@/shared/ui/ui-link";
 
 export function SignUpFormOtp(){
 
-    const{handleSubmit, isPanding,register,errorMessage}=useSignUpForm()
+    const{handleSubmit, isPanding,register,errorMessage}=useSignUpFormOtp()
 
     return (
         <form className="flex flex-col gap-2" 
               onSubmit={handleSubmit}>
 
 
-            {/* <UiTextField label="Email"
+            <UiTextField label="Enter your Email end receiv code Otp"
              inputProps={{type:'email',...register('email',{required:true})}}
-             /> */}
-            <UiTextField label="Code Otp"
-             inputProps={{type:'password',...register('password',{required:true})}}
              />
-             {/* не находит signUpMutation.isLoading заменил пока на isPanding */}
             <UiButton disabled={isPanding} variant="primary">
-                Sign Up
+                Send Code Otp
                 </UiButton>
 
-            <UiLink className="text-center" href={ROUTES.SIGN_IN}>
-                Sign In
-            </UiLink>
 
             {errorMessage&& <div className="text-rose-500">{errorMessage}</div>}
 

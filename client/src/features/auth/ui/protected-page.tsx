@@ -18,7 +18,8 @@ export function protectedPage<P>(Component: (props:P)=> ReactElement){
         return <UiPageSpinner/>
       }
       if(isError){
-        router.replace(ROUTES.SIGN_IN)
+        // здесь адрес первой страницы при загрузке ROUTES.SING_UP_OTP
+        router.replace(ROUTES.SING_UP_OTP)
       }
 
 

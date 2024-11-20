@@ -11,11 +11,13 @@ export function useSignUpForm(){
     const{register,handleSubmit}= useForm<{
         email:string;
         password:string;
+        codeOtp:string
     }>()
 // это обработчик формы ,когда наж. UiButton , данные формы передаются в
 // функцию authControllerSignUp(получена из swagger документации через Orval в файл
 // generated.ts)
     const signUpMutation = useMutation({
+        // здесь вопрос как кроме данных из формы сюда попадет access-code из куки???
         mutationFn : authControllerSignUp,
         onSuccess(){
            router.push(ROUTES.HOME) 

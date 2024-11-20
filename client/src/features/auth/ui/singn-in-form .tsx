@@ -19,6 +19,11 @@ export function SignInForm(){
             <UiTextField label="Password"
              inputProps={{type:'password',...register('password',{required:true})}}
              />
+
+             <UiTextField label="Code Otp from Your email"
+             inputProps={{type:'password',...register('codeOtp',{required:true})}}
+             />
+
              {/* не находит signUpMutation.isLoading заменил пока на isPanding */}
             <UiButton disabled={isPanding} variant="primary">
                 Sign In

@@ -11,6 +11,7 @@ export function useSignInForm(){
     const{register,handleSubmit}= useForm<{
         email:string;
         password:string;
+        codeOtp:string;
     }>()
 // это обработчик формы ,когда наж. UiButton , данные формы передаются в
 // функцию authControllerSignIm(получена из swagger документации через Orval в файл

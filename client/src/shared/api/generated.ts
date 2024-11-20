@@ -24,13 +24,19 @@ export interface GetSessionInfoDto {
 }
 
 export interface SignInDto {
+  codeOtp: string;
   email: string;
   password: string;
 }
 
 export interface SignUpDto {
+  codeOtp: string;
   email: string;
   password: string;
+}
+
+export interface SignOtpDto {
+  email: string;
 }
 
 export interface HelloWorldDto {
@@ -43,6 +49,21 @@ export const appControllerGetHello = (
   options?: SecondParameter<typeof createInstance>,
 ) => {
   return createInstance<HelloWorldDto>({ url: `/`, method: "GET" }, options);
+};
+
+export const authControllerSignOtp = (
+  signOtpDto: BodyType<SignOtpDto>,
+  options?: SecondParameter<typeof createInstance>,
+) => {
+  return createInstance<void>(
+    {
+      url: `/auth/sing-up-otp`,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      data: signOtpDto,
+    },
+    options,
+  );
 };
 
 export const authControllerSignUp = (
@@ -119,6 +140,9 @@ export const accountControllerPatchAccount = (
 
 export type AppControllerGetHelloResult = NonNullable<
   Awaited<ReturnType<typeof appControllerGetHello>>
+>;
+export type AuthControllerSignOtpResult = NonNullable<
+  Awaited<ReturnType<typeof authControllerSignOtp>>
 >;
 export type AuthControllerSignUpResult = NonNullable<
   Awaited<ReturnType<typeof authControllerSignUp>>

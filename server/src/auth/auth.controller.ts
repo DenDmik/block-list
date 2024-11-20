@@ -1,5 +1,5 @@
 import { Controller,HttpStatus,Post,HttpCode,
-     Get, Body,Res, UseGuards, ExecutionContext, 
+     Get, Body,Res, UseGuards, 
      Req} from '@nestjs/common';
 import { GetSessionInfoDto, SignInDto, SignUpDto ,SignOtpDto} from './dto';
 import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
@@ -9,7 +9,6 @@ import { Response,Request } from 'express';
 import { AuthGuard } from './auth.guard';
 import { SessionInfo } from './session-info.decorator';
 import { CookieOtpServ } from './cookie.otpserv';
-import { AuthGuardOtp } from './auth.guardotp';
 
 @Controller('auth')
 export class AuthController { 

@@ -11,7 +11,7 @@ export function useSignOut(){
     const signOutMutation = useMutation({
         mutationFn: authControllerSignOut,
        async onSuccess() {
-             router.push(ROUTES.SIGN_IN)
+             router.push(ROUTES.SING_UP_OTP)
              resetSession()
 
         },

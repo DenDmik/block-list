@@ -11,6 +11,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HelloWorldDto'
+  /auth/sing-up-otp:
+    post:
+      operationId: AuthController_signOtp
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignOtpDto'
+      responses:
+        '201':
+          description: ''
   /auth/sign-up:
     post:
       operationId: AuthController_signUp
@@ -98,6 +111,14 @@ components:
           type: string
       required:
         - message
+    SignOtpDto:
+      type: object
+      properties:
+        email:
+          type: string
+          example: dmikdenis@gmail.com
+      required:
+        - email
     SignUpDto:
       type: object
       properties:
@@ -107,21 +128,29 @@ components:
         password:
           type: string
           example: '1234'
+        codeOtp:
+          type: string
+          example: '123456'
       required:
         - email
         - password
+        - codeOtp
     SignInDto:
       type: object
       properties:
         email:
           type: string
-          example: test@gmail.com
+          example: dmikdenis@gmail.com
         password:
           type: string
           example: '1234'
+        codeOtp:
+          type: string
+          example: '123456'
       required:
         - email
         - password
+        - codeOtp
     GetSessionInfoDto:
       type: object
       properties:
