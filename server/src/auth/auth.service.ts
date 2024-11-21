@@ -19,14 +19,14 @@ export class AuthService {
          
       
         ) {}
- //////////////////////////Sign Up !!! ЭТО БУДЕТ OTP VEREFICATION  (регистрация)  
+ ///Sign Up (запрос@Post('sign-up')) !!! ЭТО БУДЕТ OTP VEREFICATION  (регистрация)  
 // у нас есть SignUpDto, почему автор пишет 
 // singUp(email:string, password:string)
    async signUp(password:string,codeOtp:string,tokenOtp:string){
        
 //////////////////////////////////
 const sessionInfo=  await this.jwtService.verifyAsync(tokenOtp,{secret:process.env.JWT_SECRET})
-console.log(sessionInfo.code)
+console.log(sessionInfo)
 const code = sessionInfo.code
 const email = sessionInfo.email
 ///////////////// проверка кода otp
@@ -54,13 +54,13 @@ const user = await this.userService.findByEmail(email)
         id:newUser.id})
         return {accessToken}
        }
-       /////////////////////// SIGN IN !!! ЭТО БУДЕТ OTP VEREFICATION  (вход) 
+    /// SIGN IN(запрос @Post('sign-in')) !!! ЭТО БУДЕТ OTP VEREFICATION  (вход) 
     async signIn(password:string,codeOtp:string ,tokenOtp:string){ 
         ///////////////////////////////////////////////////
         
      const sessionInfo=  await this.jwtService.verifyAsync(tokenOtp,{secret:process.env.JWT_SECRET})
            
-    console.log(sessionInfo.code)
+    console.log(sessionInfo)
     const code = sessionInfo.code
     const email = sessionInfo.email
         ///////////////// проверка кода otp
@@ -77,7 +77,7 @@ const user = await this.userService.findByEmail(email)
         })
         return {accessToken}
     }
-    // ЭТО БУДЕТ В SIGN UP и SIGN IN
+    // ЭТО БУДЕТ В SIGN UP и SIGN IN страницах!!! (запрос @Post('sing-up-otp'))
     // функция отправки Otp на почту пользователя и создание токена
     async signOtp(email:string){
       // еще генерпция кода , работает , 6 цифр.//////////////
@@ -86,8 +86,8 @@ const user = await this.userService.findByEmail(email)
       // /////////////////////////////////////////////////////
           //  функция сенд емайл 
         //   проверь на правильность код
-try{
-    this.mailerService.sendMail({
+
+     await this.mailerService.sendMail({
         to:`${email}`,
         from:'dmytriievdenistest@gmail.com',
         subject:'Testing email',
@@ -99,7 +99,6 @@ try{
             code:code
         })
         return{accessCode}
-    } catch{ throw new BadRequestException('не отправилась почта')}                
    }
 }
 
