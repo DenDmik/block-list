@@ -28,7 +28,6 @@ export  function HomePage() {
         {data?.email}
         <SignOutButton/>
       </div>}/>
-      <UiHeader right={<div></div>}/>
       <UiButton variant="primary">HEY!</UiButton>
       <UiButton variant="secondary">Hey2</UiButton>
       <UiButton variant="outlined">Sing Out</UiButton>
@@ -45,7 +44,7 @@ export  function HomePage() {
       selectProps={{className:'border '}}
        options={[{value:'4',label:'option3'}]}/>
 
-       <UiLink href={'/'}>rtyuyytu</UiLink>
+       <UiLink href={'/'}>Link</UiLink>
        {/* <UiSpinner className="text-teal-600 w-10 h-10"/> */}
        {/* <UiPageSpinner/> */}
 

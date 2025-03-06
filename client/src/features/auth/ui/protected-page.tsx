@@ -19,7 +19,7 @@ export function protectedPage<P>(Component: (props:P)=> ReactElement){
       }
       if(isError){
         // здесь адрес первой страницы при загрузке ROUTES.SING_UP_OTP
-        router.replace(ROUTES.SING_UP_OTP)
+        router.replace(ROUTES.HOME)
       }
 
 
