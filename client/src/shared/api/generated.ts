@@ -25,13 +25,11 @@ export interface GetSessionInfoDto {
 
 export interface SignInDto {
   codeOtp: string;
-  email: string;
   password: string;
 }
 
 export interface SignUpDto {
   codeOtp: string;
-  email: string;
   password: string;
 }
 

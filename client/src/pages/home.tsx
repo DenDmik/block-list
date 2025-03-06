@@ -8,7 +8,6 @@ import { UiLink } from "@/shared/ui/ui-link";
 import { UiSpinner } from "@/shared/ui/ui-spinner";
 import { UiPageSpinner } from "@/shared/ui/ui-page-spinner";
 import { UiHeader } from "@/shared/ui/ui-header";
-import { UiHeader2 } from "@/shared/ui/2ui-header";
 
 
 import { UiSelectField2 } from "@/shared/ui/2ui-select-field";
@@ -25,7 +24,7 @@ export  function HomePage() {
   return (
     <main 
     className={`min-h-screen  `}>
-      <UiHeader2 right={<div>
+      <UiHeader right={<div>
         {data?.email}
         <SignOutButton/>
       </div>}/>

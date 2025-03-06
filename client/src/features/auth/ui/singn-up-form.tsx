@@ -13,9 +13,6 @@ export function SignUpForm(){
               onSubmit={handleSubmit}>
 
 
-            <UiTextField label="Email"
-             inputProps={{type:'email',...register('email',{required:true})}}
-             />
             <UiTextField label="Password"
              inputProps={{type:'password',...register('password',{required:true})}}
              />

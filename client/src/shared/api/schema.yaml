@@ -122,9 +122,6 @@ components:
     SignUpDto:
       type: object
       properties:
-        email:
-          type: string
-          example: test@gmail.com
         password:
           type: string
           example: '1234'
@@ -132,15 +129,11 @@ components:
           type: string
           example: '123456'
       required:
-        - email
         - password
         - codeOtp
     SignInDto:
       type: object
       properties:
-        email:
-          type: string
-          example: dmikdenis@gmail.com
         password:
           type: string
           example: '1234'
@@ -148,7 +141,6 @@ components:
           type: string
           example: '123456'
       required:
-        - email
         - password
         - codeOtp
     GetSessionInfoDto:

@@ -13,12 +13,14 @@ export function SignUpFormOtp(){
               onSubmit={handleSubmit}>
 
 
-            <UiTextField label="Enter your Email end receiv code Otp"
+            <UiTextField label="Enter your Email end receive code Otp"
              inputProps={{type:'email',...register('email',{required:true})}}
              />
             <UiButton disabled={isPanding} variant="primary">
                 Send Code Otp
                 </UiButton>
+            <UiLink className="text-center" href={ROUTES.SIGN_IN}>
+            </UiLink>   
 
 
             {errorMessage&& <div className="text-rose-500">{errorMessage}</div>}

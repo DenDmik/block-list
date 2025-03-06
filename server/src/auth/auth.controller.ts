@@ -75,7 +75,7 @@ async signUp(
 //     // в HTTP ответе res
     this.cookieService.setToken(res,accessToken)
 }
-//////////////  это страница OTP VEREFICATION (SING UP вход)
+//////////////  это страница OTP VEREFICATION (SING In вход)
 @Post('sign-in')
 @ApiOkResponse()
 @HttpCode(HttpStatus.OK)
@@ -94,7 +94,7 @@ async signIn(
 //почему нет return??? и нет await
     this.cookieService.setToken(res,accessToken)
 }
-
+////////////////////////////////////////////
 @Post('sign-out')
 @HttpCode(HttpStatus.OK)
 @ApiOkResponse()

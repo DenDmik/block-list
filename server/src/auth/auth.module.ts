@@ -36,13 +36,9 @@ MailerModule.forRootAsync({
         pass:'xrdw ixxd nsts eref'
       }
     }
-    ////////////////////////////////////
-    // transport: 'smtps://user@domain.com:pass@smtp.domain.com',
-    // defaults: {
-    //   from: '"nest-modules" <modules@nestjs.com>',
-    // },
   })
-})],
+})
+],
   controllers: [AuthController],
   providers: [AuthService, PasswordService, CookieService,CookieOtpServ],
   
