@@ -13,7 +13,7 @@ export function UiHeader({
     <header
       className={clsx(
         "px-4 py-5 border-b border-b-slate-600 flex",
-         "justify-between items-center bg-yellow-300",
+         "justify-between items-center bg-red-400",
         className,
       )}
     >
