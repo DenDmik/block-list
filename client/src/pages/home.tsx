@@ -46,6 +46,14 @@ export  function HomePage() {
        <UiLink href={'/'}>Link</UiLink>
        {/* <UiSpinner className="text-teal-600 w-10 h-10"/> */}
        {/* <UiPageSpinner/> */}
+       <UiSelectField2 label="SELECTFIELD-2"
+       selectProps={{className:'border '}}
+       options={[
+        {value:'4',label:'option4'},
+        {value:'7',label:'option7'}
+
+       ]}
+       />
 
     </main>
   );

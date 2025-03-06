@@ -21,7 +21,7 @@ export type TSelectField = UiTextFieldProps & {
   }>;
 };
 
-export function UiSelectField({
+export function UiSelectField2({
   names,
   theName,
   inputProps,

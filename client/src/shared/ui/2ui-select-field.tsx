@@ -14,7 +14,7 @@ export type UiSelectFieldProps = {
   options?: UiSelectOption[];
 };
 
-export function UiSelectField2({
+export function UiSelectField({
   className,
   error,
   label,
