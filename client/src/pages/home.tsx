@@ -36,7 +36,8 @@ export  function HomePage() {
       <UiTextField label='Text field' inputProps={{placeholder:"Enter email"}}/>
       <UiTextField error='Text field' inputProps={{placeholder:"Enter email"}}/>
       <UiTextField  inputProps={{placeholder:"Enter email"}}/>
-
+      <div className="w-full h-24 p-4 m-4 border border-blue-800
+       text-4xl text-center text-blue-800">Новый DIV</div>
       <UiSelectField
       label="ooooo"
       // подчеркнут placeholder красным (нет в типах)
