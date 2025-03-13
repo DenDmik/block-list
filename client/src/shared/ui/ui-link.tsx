@@ -1,6 +1,5 @@
 import clsx from "clsx"
 import Link from "next/link"
-import { ButtonHTMLAttributes } from "react"
 
 export type UiLinkProps ={} & Parameters<typeof Link>[0];
 
