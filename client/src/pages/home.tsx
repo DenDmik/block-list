@@ -21,15 +21,10 @@ function handleAlert(){alert('Новый DIV'); console.log('Новый DIV')}
 export  function HomePage() {
 const[visible, setVisible]= useState(false)
 const handleVisible = ()=> (setVisible(!visible))
-  const{data}=useSessionQuery()
 
   return (
     <main 
     className={`min-h-screen  `}>
-      <UiHeader right={<div>
-        {data?.email}
-        <SignOutButton/>
-      </div>}/>
       {visible && (<UiHeader/>)}
       <UiButton variant="primary" onClick={handleVisible}>HEY!</UiButton>
       <UiButton variant="secondary">Hey2</UiButton>
